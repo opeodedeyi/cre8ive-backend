@@ -111,16 +111,6 @@ class ProfileSkillEditSerializer(serializers.ModelSerializer):
         fields = ('skills',)
 
 
-class ProfilePhotoSerializer(serializers.ModelSerializer):
-    '''
-    For the user to edit his skill
-    '''
-
-    class Meta:
-        model = Profile
-        fields = ('profile_photo',)
-
-
 ###################### user serializer ######################
 class LoginSerializer(LoginSerializer):
     '''

@@ -28,7 +28,6 @@ urlpatterns = [
      path("users/<slug:slug>/following/", qv.UserFollowingView.as_view(), name="user-following"),
      path("profile/<int:pk>/", qv.ProfileRetriveUpdateAPIView.as_view(), name="profile-detail"),
      path("profile/<int:pk>/skills/", qv.ProfileSkillRUAPIView.as_view(), name="profile-skill-edit"),
-     path("profile/<int:pk>/photo/", qv.ProfilePhotoRUAPIView.as_view(), name="profile-photo-edit"),
      path("skills/", qv.SkillListAPIView.as_view(), name="skills"),
      path("skills/create/", qv.SkillCreateAPIView.as_view(), name="skills-create"),
      path("skills/<int:pk>/", qv.SkillUpdateAPIView.as_view(), name="skills-update-destroy"),
