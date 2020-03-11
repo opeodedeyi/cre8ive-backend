@@ -6,6 +6,7 @@ the accounts app handles the authentication (Login, signup, change password, res
 
 ### urls for the account related app that you need to know about
 1. verify-email/again/
+
     This expects an email to be provided then it sends a verification email to the user to verify their email. This is necessary when the verification email has expired and they didnt verify their email
     ```
     {
