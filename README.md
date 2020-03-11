@@ -6,7 +6,24 @@ the accounts app handles the authentication (Login, signup, change password, res
 
 ### urls for the account related app that you need to know about
 1. verify-email/again/
+    This expects an email to be provided then it sends a verification email to the user to verify their email. This is necessary when the verification email has expired and they didnt verify their email
+    ```
+    {
+        "email": ""
+    }
+    ```
+
 2. signup/
+    This is to sign up the user into their account
+    ```
+    {
+        "email": "",
+        "password1": "",
+        "password2": "",
+        "name": ""
+    }
+    ```
+
 3. google/
 4. password/reset/
 5. me/
@@ -24,3 +41,4 @@ the accounts app handles the authentication (Login, signup, change password, res
 17. users/<slug:slug>/showcases/
 18. users/<slug:slug>/collaboration/
 19. users/<slug:slug>/administrator/
+
