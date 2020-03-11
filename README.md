@@ -14,6 +14,7 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 2. signup/
 
     This is to sign up the user into their account
@@ -26,6 +27,7 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 3. google/
 
     This just needs the accesstoken to be provided, and can be gotten by implementing firebase to the frontend
@@ -35,6 +37,7 @@ the accounts app handles the authentication (Login, signup, change password, res
         "code": ""
     }
     ```
+
 
 4. password/reset/
 
@@ -57,33 +60,41 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 5. me/
 
     This just returns the current logged in user's slug
+
 
 6. users/
 
     This returns all the users in the database
 
+
 7. users/<slug:slug>/
 
     This returns the the user whose slug is passed to the url
+
 
 8. users/<slug:slug>/follow/
 
     This follows the user whose slug is passed to the url
 
+
 9. users/<slug:slug>/unfollow/
 
     This unfollows the user whose slug is passed to the url
+
 
 10. users/<slug:slug>/followers/
 
     This this lists all the followers of the user whose slug is passed to the url
 
+
 11. users/<slug:slug>/following/
 
     This this lists all users that the user whose slug is passed to the url is following
+
 
 12. profile/<int:pk>/
 
@@ -102,9 +113,13 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
     sex accepts one of two options "Male" or "Female"
+
     type_of_body accepts one of four options "Slim", "Average", "Athletic" and "Heavyset"
+
     date_of_birth takes this format "mm-dd-yyyy" and should be put like this "1994-12-22"
+
     feet and inches accepts a number and the front end should do the limiting to a certain length
+
 
 13. profile/<int:pk>/skills/
 
@@ -117,9 +132,11 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 14. skills/
 
     This is to list all the skills in the database
+
 
 15. skills/create/
 
@@ -133,6 +150,7 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 16. skills/<int:pk>/
 
     This allows only admin users to update and delete a particular skill
@@ -144,6 +162,8 @@ the accounts app handles the authentication (Login, signup, change password, res
         "description": ""
     }
     ```
+
+
 17. user/
 
     This shows the current user logged in his details, and this will allow the user add or change his display picture
@@ -155,14 +175,18 @@ the accounts app handles the authentication (Login, signup, change password, res
     }
     ```
 
+
 18. users/<slug:slug>/showcases/
 
     This shows all the showcases of the current user whose slug is passed in the url
+
 
 19. users/<slug:slug>/collaboration/
 
     This shows all the collaborations of the current user whose slug is passed in the url
 
+
 20. users/<slug:slug>/sadministrator/
 
     This shows all the showcases that the current user whose slug is passed in the url is an administrator to
+
