@@ -5,6 +5,9 @@ cre8ive-mart backend api
 the accounts app handles the authentication (Login, signup, change password, reset password, email authentication, google login) of the app
 
 ### urls for the account related app that you need to know about
+Before each of these routes, add api/
+
+
 1. verify-email/again/
 
     This expects an **email** to be provided then it sends a verification email to the user to verify their email. This is necessary when the verification email has expired and they didn't verify their email.
