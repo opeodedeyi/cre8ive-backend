@@ -2,11 +2,11 @@
 cre8ive-mart backend api
 
 ## Table of contents
-* [accounts app](#accounts-app)
+* [Accounts app](#Accounts-app)
 * [Showcase app](#Showcase-app)
 
-## accounts app
-the accounts app handles the authentication (Login, signup, change password, reset password, email authentication, google login) of the app
+## Accounts app
+The accounts app handles the authentication (Login, signup, change password, reset password, email authentication, google login) of the app
 
 ### urls for the account related app that you need to know about
 Before each of these routes, add api/
