@@ -101,6 +101,10 @@ the accounts app handles the authentication (Login, signup, change password, res
         "lives_in": ""
     }
     ```
+    sex accepts one of two options "Male" or "Female"
+    type_of_body accepts one of four options "Slim", "Average", "Athletic" and "Heavyset"
+    date_of_birth takes this format "mm-dd-yyyy" and should be put like this "1994-12-22"
+    feet and inches accepts a number and the front end should do the limiting to a certain length
 
 13. profile/<int:pk>/skills/
 
