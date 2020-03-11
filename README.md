@@ -7,7 +7,7 @@ the accounts app handles the authentication (Login, signup, change password, res
 ### urls for the account related app that you need to know about
 1. verify-email/again/
 
-    This expects an email to be provided then it sends a verification email to the user to verify their email. This is necessary when the verification email has expired and they didnt verify their email
+    This expects an **email** to be provided then it sends a verification email to the user to verify their email. This is necessary when the verification email has expired and they didn't verify their email.
     ```
     {
         "email": ""
@@ -26,11 +26,12 @@ the accounts app handles the authentication (Login, signup, change password, res
         "name": ""
     }
     ```
+    the name should be the **fullname** (firstname and lastname)
 
 
 3. google/
 
-    This just needs the accesstoken to be provided, and can be gotten by implementing firebase to the frontend
+    This just needs the **access_token** alone to be provided, and can be gotten by implementing firebase or any other method of your choice to the frontend
     ```
     {
         "access_token": "",
@@ -41,7 +42,7 @@ the accounts app handles the authentication (Login, signup, change password, res
 
 4. password/reset/
 
-    This expects an email to be provided then it sends an email to the user reset their password.
+    This expects an **email** to be provided then it sends an email to the user reset their password.
     ```
     {
         "email": ""
@@ -50,7 +51,7 @@ the accounts app handles the authentication (Login, signup, change password, res
 
     password/reset/confirm/<uidb64>/<token>/
 
-    This expects the new passwords of the user and uid and token which is gotten from the link/url of the current site.
+    This expects the new **password** of the user and **uid** and **token** which is gotten from the **link**/**url** of the current site.
     ```
     {
         "new_password1": "",
@@ -100,7 +101,9 @@ the accounts app handles the authentication (Login, signup, change password, res
 
     This shows a particular users profile, and if the profile is owned by the current user, then he can edit the profile with either a PUT or PATCH request.
 
-    The fields needed are date of birth, bio, sex, type_of_body, feet, innches, lives_in. Adding the skills is not handled on this route
+    The fields needed are **date_of_birth**, **bio**, **sex**, **type_of_body**, **feet**, **inches**, **lives_in**.
+
+    **Note**: Adding the skills to the user is not handled on this route
     ```
     {
         "date_of_birth": null,
@@ -112,18 +115,18 @@ the accounts app handles the authentication (Login, signup, change password, res
         "lives_in": ""
     }
     ```
-    sex accepts one of two options "Male" or "Female"
+    **sex** accepts one of two options "Male" or "Female"
 
-    type_of_body accepts one of four options "Slim", "Average", "Athletic" and "Heavyset"
+    **type_of_body** accepts one of four options "Slim", "Average", "Athletic" and "Heavyset"
 
-    date_of_birth takes this format "mm-dd-yyyy" and should be put like this "1994-12-22"
+    **date_of_birth** takes this format "mm-dd-yyyy" and should be put like this "1994-12-22"
 
-    feet and inches accepts a number and the front end should do the limiting to a certain length
+    **feet** and **inches** accepts a number and the front end should do the limiting to a certain length
 
 
 13. profile/<int:pk>/skills/
 
-    This is for the user to add his skills to his profile.
+    This is for the user to add his **skills** to his profile.
 
     The skills to be added are from a foreign key
     ```
@@ -140,7 +143,7 @@ the accounts app handles the authentication (Login, signup, change password, res
 
 15. skills/create/
 
-    This allows only admin users to create a new skill to the website
+    This allows only admin users to create a new **skill** to the website
 
     ```
     {
@@ -174,6 +177,7 @@ the accounts app handles the authentication (Login, signup, change password, res
         "picture": null
     }
     ```
+    It is named picture instead of display_picture for convinience on the backend, so when signing up with google, it can automatically send the picture from google to the field
 
 
 18. users/<slug:slug>/showcases/
