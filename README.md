@@ -2,8 +2,21 @@
 cre8ive-mart backend api
 
 ## Table of contents
+* [Setup](#Setup)
 * [Accounts app](#Accounts-app)
 * [Showcase app](#Showcase-app)
+
+## Setup
+To run this project, install it locally using pip:
+
+```
+$ python -m venv ./venv
+$ source ./venv/Scripts/activate
+$ pip install -r requirements.txt
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver
+```
 
 ## Accounts app
 The accounts app handles the authentication (Login, signup, change password, reset password, email authentication, google login) of the app
@@ -211,41 +224,96 @@ Before each of these routes, add api/
 
 1. showcase/create/
 
+    This creates a new showcase, and muste be logged in to do this
+    ```
+    {
+        "title": "example title",
+        "description": "example description",
+        "content": null,
+        "skill_type": [
+            1,2,3
+        ]
+    }
+    ```
+    The **content** is the images, videos, audio of the showcase and it is supposed to be gotten from AWS or Cloudnairy. The **skill_type** also receives an list of the skills **id**. The route also has a get method and this can be useful to show the fields already selected by the user.
+
 
 2. showcase/
+
+    This shows all of the showcases in the database
 
 
 3. showcase/mostliked/
 
+    This route lists the most liked showcaases of all time
+
 
 4. showcase/mostlikedy/
+
+    This route lists the most liked showcaases of the year
 
 
 5. showcase/mostlikedm/
 
+    This route lists the most liked showcaases of the month
+
 
 6. showcase/mostlikedw/
+
+    This route lists the most liked showcaases of the week
 
 
 7. showcase/followingshowcases/
 
+    Shows all the showcases that a logged in user follows.
+
 
 8. showcase/<slug:slug>/
+
+    This gets a particular showcase through the slug
 
 
 9. showcase/<slug:slug>/edit/
 
+    This allows administrators to a particular showcase to edit that showcase
+    ```
+    {
+        "title": "The Gods Must Be Crazy",
+        "description": "",
+        "content": null,
+        "skill_type": [
+            1,2,3
+        ]
+    }
+    ```
+    The **content** is the images, videos, audio of the showcase and it is supposed to be gotten from AWS or Cloudnairy. The **skill_type** also receives an list of the skills **id**. The route also has a get method and this can be useful to show the fields already selected by the user.
+
 
 10. showcase/<slug:slug>/like/
+
+    Here two requests can be made here, An empty **POST** request to like and a **DELETE** request to unlike a particular showcase, which is the showcase of the slug in the URL. The user has to be logged in to do this.
 
 
 11. showcase/<slug:slug>/likers/
 
+    This lists all the likers to the showcase of the slug in the URL.
+
 
 12. showcase/<slug:slug>/admin/
 
+    This shows all of the administrators of a particular showcase. This showcase is of the slug passed in the URL.
+
 
 13. showcase/<slug:slug>/admin/add/
+
+    This allows administrators to add other administrators to the showcase
+    ```
+    {
+        "administrator": [
+            "slug of user", "slug of user"
+        ]
+    }
+    ```
 
 
 14. showcase/<slug:slug>/collaborator/

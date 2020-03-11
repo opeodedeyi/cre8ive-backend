@@ -346,6 +346,12 @@ class ShowcaseAdminSerializer(serializers.ModelSerializer):
             instance.administrator.add(user)
         return instance
 
+    def delete(self, instance, validated_data):
+        users = validated_data.get('administrator')
+        for user in users:
+            instance.administrator.add(user)
+        return instance
+
 
 class ShowcaseLikeSerializer(serializers.ModelSerializer):
     voters = serializers.SlugRelatedField(slug_field='slug', many=True, queryset=User.objects.all())

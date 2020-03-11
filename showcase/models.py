@@ -13,7 +13,7 @@ class Showcase(models.Model):
     '''
     title = models.CharField(max_length=50)
     description = models.TextField(null=True)
-    skill_type = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    skill_type = models.ManyToManyField(Skill)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="Showcases")
     content = models.TextField(null=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -75,7 +75,7 @@ class Collaborator(models.Model):
     post = models.ForeignKey(Showcase, on_delete=models.CASCADE, related_name="collaborated_showcases")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, 
                             on_delete=models.CASCADE, related_name="collaborators")
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, null=True, related_name="creative_type")
+    skill = models.ManyToManyField(Skill, related_name="creative_type")
     role = models.TextField(null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

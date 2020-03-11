@@ -83,6 +83,19 @@ class showcaseAddAdminAPIView(APIView):
         except APIException:
             return Response(status=status.HTTP_403_FORBIDDEN)
 
+    def delete(self, request, slug):
+        showcase = get_object_or_404(Showcase, slug=slug)
+        try:
+            self.check_object_permissions(request, showcase)
+            serializer = self.serializer_class(showcase, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'message': 'Successfully removed user as an admin'}, status=status.HTTP_204_NO_CONTENT)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except APIException:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
 
 class showcaseListAdminAPIView(generics.RetrieveAPIView):
     '''
