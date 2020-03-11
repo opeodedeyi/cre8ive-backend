@@ -110,6 +110,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Skill(models.Model):
     name = models.CharField(max_length=60)
     subcategory = models.CharField(max_length=60, blank=True, null=True)
+    description = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.DO_NOTHING)

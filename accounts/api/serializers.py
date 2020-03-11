@@ -19,7 +19,7 @@ class SkillSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Skill
-        fields = ('pk', 'name', 'subcategory')
+        fields = ('pk', 'name', 'subcategory', 'description')
         read_only_fields = ('pk',)
 
 
