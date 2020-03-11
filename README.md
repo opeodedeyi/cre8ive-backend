@@ -1,6 +1,10 @@
 # cre8ive-backend
 cre8ive-mart backend api
 
+## Table of contents
+* [accounts app](#accounts-app)
+* [Showcase app](#Showcase-app)
+
 ## accounts app
 the accounts app handles the authentication (Login, signup, change password, reset password, email authentication, google login) of the app
 
