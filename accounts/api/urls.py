@@ -12,7 +12,6 @@ urlpatterns = [
      path('verify-email/again/', qv.EmailConfirmation.as_view(), name='resend-email-confirmation'),
      path('signup/account-confirm-email/<key>/', ConfirmEmailView.as_view(), name='account_confirm_email'),
      path('', include('rest_auth.urls')),
-     path('accounts/', include('allauth.urls')),            #to be deleted later
      path('signup/', include('rest_auth.registration.urls')),
      path('google/', qv.GoogleLogin.as_view(), name='google_login'),
      path('password/reset/', PasswordResetView.as_view(), name='password_reset'),
