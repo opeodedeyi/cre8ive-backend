@@ -122,7 +122,7 @@ Before each of these routes, add api/
 
     **type_of_body** accepts one of four options "Slim", "Average", "Athletic" and "Heavyset"
 
-    **date_of_birth** takes this format "mm-dd-yyyy" and should be put like this "1994-12-22"
+    **date_of_birth** takes this format "yyyy-mm-dd" and should be put like this "1994-12-22"
 
     **feet** and **inches** accepts a number and the front end should do the limiting to a certain length
 
@@ -155,6 +155,7 @@ Before each of these routes, add api/
         "description": ""
     }
     ```
+    the description gives people us the freedom to explain the skills to people so they can better understand what they are selecting, or explain a particular skill to a random user.
 
 
 16. skills/<int:pk>/
@@ -196,4 +197,88 @@ Before each of these routes, add api/
 20. users/<slug:slug>/sadministrator/
 
     This shows all the showcases that the current user whose slug is passed in the url is an administrator to
+
+
+## Showcase app
+The Showcase app handles the uploading/showcasing of works, admin administrators to a showcase so they can manage the project, and comments, replies and likes to showcases.
+
+### urls for the Showcase related app that you need to know about
+Before each of these routes, add api/
+
+1. showcase/create/
+
+
+2. showcase/
+
+
+3. showcase/mostliked/
+
+
+4. showcase/mostlikedy/
+
+
+5. showcase/mostlikedm/
+
+
+6. showcase/mostlikedw/
+
+
+7. showcase/followingshowcases/
+
+
+8. showcase/<slug:slug>/
+
+
+9. showcase/<slug:slug>/edit/
+
+
+10. showcase/<slug:slug>/like/
+
+
+11. showcase/<slug:slug>/likers/
+
+
+12. showcase/<slug:slug>/admin/
+
+
+13. showcase/<slug:slug>/admin/add/
+
+
+14. showcase/<slug:slug>/collaborator/
+
+
+15. showcase/<slug:slug>/collaborator/add/
+
+
+16. showcase/collaborator/<int:pk>/
+
+
+17. showcase/collaborator/<int:pk>/update/
+
+
+18. showcase/collaborator/<int:pk>/delete/
+
+
+19. showcase/<slug:slug>/comment/
+
+
+20. showcase/<slug:slug>/comments/
+
+
+21. showcase/comments/<int:pk>/
+
+
+22. showcase/comments/<int:pk>/like/
+
+
+23. showcase/comments/<int:pk>/reply/
+
+
+24. showcase/comments/<int:pk>/replies/
+
+
+25. showcase/replies/<int:pk>/
+
+
+26. showcase/replies/<int:pk>/like/
 
