@@ -573,3 +573,4 @@ Before each of these routes, add api/
     1. Token authentication (JWT)
     2. Expired email message
     3. image fields as an object
+    4. filter/search
