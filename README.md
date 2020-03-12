@@ -569,6 +569,7 @@ Before each of these routes, add api/
 ## Notes
 
 * Pagination is automatically done by the app for 20 results per page
+* for sign in and sign up, the major packages used were [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html#) and [Django rest auth](https://django-rest-auth.readthedocs.io/en/latest/#)
 * Need to fix
     1. Token authentication (JWT)
     2. Expired email message
