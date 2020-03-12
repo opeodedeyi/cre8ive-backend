@@ -469,56 +469,98 @@ Before each of these routes, add api/
 
 5. collaboration/<slug:slug>/admin/
 
+    This is to view all administrators to a collaboration.
 
 
 6. collaboration/<slug:slug>/admin/add/
 
+    This is for adding more administrators to the collaboration.
+    ```
+    {
+        "administrator": [
+            "ope-doe-kaunts1p0unp6bx",
+            "odedeyi-david-9xgp9xo1jjiqlpk"
+        ]
+    }
+    ```
 
 
 7. collaboration/<slug:slug>/like/
 
+    An empty **POST** request to like and a **DELETE** request to unlike a particular collaboration.
 
 
 8. collaboration/<slug:slug>/likers/
 
+    This lists all the likers to the collaboration of the slug in the URL.
 
 
 9. collaboration/<slug:slug>/comment/
 
+    Allows authenticated users to make a comment on a collaboration.
+    ```
+    {
+        "body": ""
+    }
+    ```
 
 
 10. collaboration/<slug:slug>/comments/
 
+    lists all the comments to a particular collaboration.
 
 
 11. collaboration/<slug:slug>/interest/
 
+    This shows all the interests shown to a collaboration.
 
 
 12. collaboration/<slug:slug>/interest/show/
 
+    An empty **POST** and **DELETE** request to show interest and remove interest.
 
 
 13. collaboration/comments/<int:pk>/
 
+    Allows the owner of the comment to edit using a **PUT** or **PATCH** method and to delete the comment with the **DELETE** method, and must be authenticated to perform the action.
+    ```
+    {
+        "body": "hello there"
+    }
+    ```
 
 
 14. collaboration/comments/<int:pk>/like/
 
+    An empty **POST** request to like and a **DELETE** request to unlike a particular comment
 
 
 15. collaboration/comments/<int:pk>/reply/
 
+    A **POST** request to reply a particular comment
+    ```
+    {
+        "body": ""
+    }
+    ```
 
 
 16. collaboration/comments/<int:pk>/replies/
 
+    This lists all the replies to a particular comment. The comment whose *id* is passed into the URL
 
 
 17. collaboration/replies/<int:pk>/
 
+    This allows a **POST** and **PATCH** request to edit a particular reply, and a **DELETE** request to delete a particular reply. The reply whose *id* is passed into the URL
+    ```
+    {
+        "body": ""
+    }
+    ```
 
 
 18. collaboration/replies/<int:pk>/like/
 
+    An empty **POST** request to like and a **DELETE** request to unlike a particular reply
 
