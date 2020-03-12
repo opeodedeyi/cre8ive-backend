@@ -5,6 +5,7 @@ cre8ive-mart backend api
 * [Setup](#Setup)
 * [Accounts app](#Accounts-app)
 * [Showcase app](#Showcase-app)
+* [Collaborate app](#Collaborate-app)
 
 ## Setup
 To run this project, install it locally using pip:
@@ -238,6 +239,7 @@ Before each of these routes, add api/
     The **content** is the images, videos, audio of the showcase and it is supposed to be gotten from AWS or Cloudnairy. The **skill_type** also receives an list of the skills **id**. The route also has a get method and this can be useful to show the fields already selected by the user.
 
 
+
 2. showcase/
 
     This shows all of the showcases in the database
@@ -418,4 +420,105 @@ Before each of these routes, add api/
 26. showcase/replies/<int:pk>/like/
 
     An empty **POST** request to like and a **DELETE** request to unlike a particular reply
+
+
+
+## Collaborate app
+The Collaborate app handles the collaboration on projects requests with other people, add administrators to a collaboration so they can manage it, and comments, replies and likes to a collaboration.
+
+### urls for the Collaborate related app that you need to know about
+Before each of these routes, add api/
+
+1. collaboration/
+
+    Shows al the collaboration requests in the database
+
+
+2. collaboration/create/
+
+    This is to create a collaboration request for a project. expects a **POST** request.
+    ```
+    {
+        "title": "",
+        "description": "",
+        "media": "",
+        "location": "",
+        "looking_for": [1,2]
+    }
+    ```
+
+
+3. collaboration/<slug:slug>/
+
+    This is to retrieve a particular collaboration
+
+
+4. collaboration/<slug:slug>/edit/
+
+    Allows administrators to edit a collaboration (i.e. to change the title, description, media files, location, and skills that are searched for)
+    ```
+    {
+        "title": "",
+        "description": "",
+        "media": "",
+        "location": "",
+        "looking_for": [1,2]
+    }
+    ```
+
+
+5. collaboration/<slug:slug>/admin/
+
+
+
+6. collaboration/<slug:slug>/admin/add/
+
+
+
+7. collaboration/<slug:slug>/like/
+
+
+
+8. collaboration/<slug:slug>/likers/
+
+
+
+9. collaboration/<slug:slug>/comment/
+
+
+
+10. collaboration/<slug:slug>/comments/
+
+
+
+11. collaboration/<slug:slug>/interest/
+
+
+
+12. collaboration/<slug:slug>/interest/show/
+
+
+
+13. collaboration/comments/<int:pk>/
+
+
+
+14. collaboration/comments/<int:pk>/like/
+
+
+
+15. collaboration/comments/<int:pk>/reply/
+
+
+
+16. collaboration/comments/<int:pk>/replies/
+
+
+
+17. collaboration/replies/<int:pk>/
+
+
+
+18. collaboration/replies/<int:pk>/like/
+
 

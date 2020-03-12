@@ -12,6 +12,7 @@ class Collaborate(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True)
     media = models.TextField(null=True)
+    looking_for = models.ManyToManyField(Skill, related_name="skills_needed")
     location = models.CharField(null=True, max_length=100)
     voters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="likers")
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="adminis", blank=True)
