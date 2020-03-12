@@ -572,4 +572,4 @@ Before each of these routes, add api/
 * Need to fix
     1. Token authentication (JWT)
     2. Expired email message
-    3. imahe fields as an object
+    3. image fields as an object
