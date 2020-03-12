@@ -18,7 +18,7 @@ class CollaboratorSerializer(serializers.ModelSerializer):
     def validate_user(self, value):
         showcase = self.context.get('post')
         if showcase.collaborated_showcases.filter(user=value).exists():
-            raise serializers.ValidationError("Can't add an existing collaborator to a showcase")
+            raise serializers.ValidationError("Cannot add an the collaborator because the collaborator already exist")
         return value
 
     def create(self, validated_data):
@@ -341,12 +341,6 @@ class ShowcaseAdminSerializer(serializers.ModelSerializer):
         fields = ['administrator',]
 
     def update(self, instance, validated_data):
-        users = validated_data.get('administrator')
-        for user in users:
-            instance.administrator.add(user)
-        return instance
-
-    def delete(self, instance, validated_data):
         users = validated_data.get('administrator')
         for user in users:
             instance.administrator.add(user)

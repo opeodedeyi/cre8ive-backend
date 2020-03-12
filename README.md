@@ -286,7 +286,9 @@ Before each of these routes, add api/
         ]
     }
     ```
-    The **content** is the images, videos, audio of the showcase and it is supposed to be gotten from AWS or Cloudnairy. The **skill_type** also receives an list of the skills **id**. The route also has a get method and this can be useful to show the fields already selected by the user.
+    * The **content** is the images, videos, audio of the showcase and it is supposed to be gotten from AWS or Cloudnairy. 
+    * The **skill_type** also receives an list of the skills **id** that you want to add. 
+    * The route also has a get method and this can be useful to show the fields already selected by the user.
 
 
 10. showcase/<slug:slug>/like/
@@ -306,7 +308,7 @@ Before each of these routes, add api/
 
 13. showcase/<slug:slug>/admin/add/
 
-    This allows administrators to add other administrators to the showcase
+    This allows administrators to add other administrators to the showcase, and you can add more than one user at a time as an admin.
     ```
     {
         "administrator": [
@@ -318,39 +320,102 @@ Before each of these routes, add api/
 
 14. showcase/<slug:slug>/collaborator/
 
+    This shows all  the collaborators to a particular showcase
+
 
 15. showcase/<slug:slug>/collaborator/add/
+
+    This allows an administrator to add a collaborator to a showcase he is an admin of
+    ```
+    {
+        "user": "user-slug",
+        "role": "",
+        "skill": [
+            2,1
+        ]
+    }
+    ```
 
 
 16. showcase/collaborator/<int:pk>/
 
+    This shows the details of a particular collaborator
+
 
 17. showcase/collaborator/<int:pk>/update/
+
+    Allows administrators and the person added as a collaborator to edit the related collaborator's profile
+    ```
+    {
+        "role": "danced throughout the movie",
+        "skill": [
+            3
+        ]
+    }
+    ```
 
 
 18. showcase/collaborator/<int:pk>/delete/
 
+    Allows administrators and the person added as a collaborator to delete the related collaborator's profile
+
 
 19. showcase/<slug:slug>/comment/
+
+    Allows authenticated users to make a comment on a showcase
+    ```
+    {
+        "body": ""
+    }
+    ```
 
 
 20. showcase/<slug:slug>/comments/
 
+    lists all the comments to a particular showcase
+
 
 21. showcase/comments/<int:pk>/
+
+    Allows the owner of the comment to edit using a **PUT** or **PATCH** method and to delete the comment with the **DELETE** method, and must be authenticated to perform the action.
+    ```
+    {
+        "body": "hello there"
+    }
+    ```
 
 
 22. showcase/comments/<int:pk>/like/
 
+    An empty **POST** request to like and a **DELETE** request to unlike a particular comment
+
 
 23. showcase/comments/<int:pk>/reply/
+
+    A **POST** request to reply a particular comment
+    ```
+    {
+        "body": ""
+    }
+    ```
 
 
 24. showcase/comments/<int:pk>/replies/
 
+    This lists all the replies to a particular comment. The comment whose *id* is passed into the URL
+
 
 25. showcase/replies/<int:pk>/
 
+    This allows a **POST** and **PATCH** request to edit a particular reply, and a **DELETE** request to delete a particular reply. The reply whose *id* is passed into the URL
+    ```
+    {
+        "body": ""
+    }
+    ```
+
 
 26. showcase/replies/<int:pk>/like/
+
+    An empty **POST** request to like and a **DELETE** request to unlike a particular reply
 

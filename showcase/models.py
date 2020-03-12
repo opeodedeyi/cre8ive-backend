@@ -81,5 +81,5 @@ class Collaborator(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.name} collaborated with {self.post.user.name} on '{self.post.title}' as a {self.skill.name}"
+        return f"{self.user.name} collaborated with {self.post.user.name} on '{self.post.title}'"
 
