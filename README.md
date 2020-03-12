@@ -6,6 +6,7 @@ cre8ive-mart backend api
 * [Accounts app](#Accounts-app)
 * [Showcase app](#Showcase-app)
 * [Collaborate app](#Collaborate-app)
+* [Notes](#Notes)
 
 ## Setup
 To run this project, install it locally using pip:
@@ -564,3 +565,11 @@ Before each of these routes, add api/
 
     An empty **POST** request to like and a **DELETE** request to unlike a particular reply
 
+
+## Notes
+
+* Pagination is automatically done by the app for 20 results per page
+* Need to fix
+    1. Token authentication (JWT)
+    2. Expired email message
+    3. imahe fields as an object
