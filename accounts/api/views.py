@@ -35,6 +35,8 @@ from .serializers import (CustomUserDetailsSerializer,
                           FollowingSerializer)
 from showcase.api.serializers import ShowcaseSerializer, CollaboratorSerializer
 from showcase.models import Showcase, Collaborator
+from collaborate.api.serializers import CollaborateSerializer
+from collaborate.models import Collaborate
 from accounts.models import Profile, Skill, FollowLog
 
 
@@ -116,26 +118,15 @@ class MyUserView(APIView):
         return Response({"slug": user_slug}, status=status.HTTP_200_OK)
 
 
-class ListUsersView(APIView, MyPaginationMixin):
+class ListUsersView(generics.ListAPIView):
     '''
     Gets all the users in the database
     '''
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-    pagination_class = api_settings.DEFAULT_PAGINATION_CLASS
-    filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('email', 'name', 'profiles__skills')
-    # filter_backends = [filtr.SearchFilter]
-    search_fields = ['email', 'name', 'profiles__skills']
-
-    def get(self, request):
-        page = self.paginate_queryset(self.queryset)
-
-        if page is not None:
-            serializer_context = {"request": request}
-            serializer = self.serializer_class(page, context=serializer_context, many=True)
-            return self.get_paginated_response(serializer.data)
+    filter_backends = [filtr.SearchFilter]
+    search_fields = ['email', 'name', 'profiles__skills__name']
 
 
 class UserRetriveAPIView(APIView):
@@ -310,3 +301,16 @@ class AdminShowcasesViewSet(generics.ListAPIView):
         kwarg_slug = self.kwargs.get("slug")
         user = get_object_or_404(User, slug=kwarg_slug)
         return Showcase.objects.filter(administrator=user)
+
+
+class AdminCollaborationsViewSet(generics.ListAPIView):
+    '''
+    List all the collaborations that a user is an administrator of
+    '''
+    serializer_class = CollaborateSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        kwarg_slug = self.kwargs.get("slug")
+        user = get_object_or_404(User, slug=kwarg_slug)
+        return Collaborate.objects.filter(administrator=user)

@@ -3,6 +3,7 @@ from rest_framework import generics, viewsets, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework import filters as filtr
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from rest_framework.permissions import (IsAuthenticated,
@@ -29,11 +30,13 @@ User = get_user_model()
 # Collaborate APIView
 class CollaborationListView(generics.ListAPIView):
     '''
-    Create list and showcases view. user must be logged in to do this
+    list showcases view. user must be logged in to do this
     '''
     queryset = Collaborate.objects.all()
     serializer_class = CollaborateSerializer
     permission_classes = [AllowAny]
+    filter_backends = [filtr.SearchFilter]
+    search_fields = ['title', 'description', 'looking_for__name', 'location']
 
 
 class CollaborationCreateView(generics.CreateAPIView):

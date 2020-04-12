@@ -19,7 +19,7 @@ urlpatterns = [
      path('emailverified/', qv.EmailVerifiedView.as_view(), name='email_verified'),
      path('emailverifiedfailure/', qv.EmailFailureVerifiedView.as_view(), name='email_verified_failure'),
      path('me/', qv.MyUserView.as_view(), name='my-user'),
-     path('users/', qv.ListUsersView.as_view(), name='list-users'),
+     path('users/', qv.ListUsersView.as_view(), name='list-users'), # Edit mmade
      path("users/<slug:slug>/", qv.UserRetriveAPIView.as_view(), name="users-detail"),
      path("users/<slug:slug>/follow/", qv.FollowAUserView.as_view(), name="users-follow"),
      path("users/<slug:slug>/unfollow/", qv.UnFollowAUserView.as_view(), name="users-unfollow"),
@@ -35,4 +35,5 @@ urlpatterns = [
      path("users/<slug:slug>/showcases/", qv.ListAUsersShowcasesViewSet.as_view(), name="a-users-showcase-list"),
      path("users/<slug:slug>/collaboration/", qv.ListCollaborationShowcasesViewSet.as_view(), name="users-collaborated-showcase-list"),
      path("users/<slug:slug>/sadministrator/", qv.AdminShowcasesViewSet.as_view(), name="users-admin-showcase-list"),
+     path("users/<slug:slug>/cadministrator/", qv.AdminCollaborationsViewSet.as_view(), name="users-admin-collaborations-list"),
 ]

@@ -8,6 +8,7 @@ from rest_framework.exceptions import APIException
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly,
                                         AllowAny)
+from rest_framework import filters as filtr
 from .permissions import (IsUserOrReadOnly, 
                           IsAdmin, 
                           IsUser, 
@@ -39,6 +40,8 @@ class showcaseListViewSet(generics.ListAPIView):
     queryset = Showcase.objects.all()
     serializer_class = ShowcaseSerializer
     permission_classes = [AllowAny]
+    filter_backends = [filtr.SearchFilter]
+    search_fields = ['title', 'description', 'skill_type__name', 'user__name', 'user__email']
 
 
 class showcaseCreateViewSet(generics.CreateAPIView):

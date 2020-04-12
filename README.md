@@ -218,6 +218,11 @@ Before each of these routes, add api/
     This shows all the showcases that the current user whose slug is passed in the url is an administrator to
 
 
+21. users/<slug:slug>/cadministrator/
+
+    This shows all the collaborations that the current user whose slug is passed in the url is an administrator to
+
+
 ## Showcase app
 The Showcase app handles the uploading/showcasing of works, admin administrators to a showcase so they can manage the project, and comments, replies and likes to showcases.
 
@@ -569,9 +574,8 @@ Before each of these routes, add api/
 ## Notes
 
 * Pagination is automatically done by the app for 20 results per page
-* for sign in and sign up, the major packages used were [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html#) and [Django rest auth](https://django-rest-auth.readthedocs.io/en/latest/#)
+* For sign in and sign up, the major packages used were [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html#) and [Django rest auth](https://django-rest-auth.readthedocs.io/en/latest/#)
 * Need to fix
     1. Token authentication (JWT)
     2. Expired email message
     3. image fields as an object
-    4. filter/search
