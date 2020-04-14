@@ -56,19 +56,40 @@ class CustomRegisterView(RegisterView):
 
 
 ############################### confirm email view ###############################
-# class CustomConfirmEmailView(ConfirmEmailView):
-#     def get(self, *args, **kwargs):
-#         try:
-#             self.object = self.get_object()
-#         except Http404:
-#             self.object = None
-#         user = User.objects.get(email=self.object.email_address.email)
-#         redirect_url = reverse('user', args=(user.id,))
-#         return redirect(redirect_url)
+class ConfirmEmailView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, *args, **kwargs):
+        self.object = confirmation = self.get_object()
+        try:
+            confirmation.confirm(self.request)
+            # A React Router Route will handle the success scenario
+            return Response({"detail": "Your email has been successfully verified."}, status=status.HTTP_200_OK)
+        except:
+            # A React Router Route will handle the failure scenario
+            return Response({"detail": "The verification email has expired, please request a new verification email"}, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_object(self, queryset=None):
+        key = self.kwargs['key']
+        email_confirmation = EmailConfirmationHMAC.from_key(key)
+        if not email_confirmation:
+            if queryset is None:
+                queryset = self.get_queryset()
+            try:
+                email_confirmation = queryset.get(key=key.lower())
+            except EmailConfirmation.DoesNotExist:
+                # A React Router Route will handle the failure scenario
+                return Response({"detail": "The verification email has expired, please request a new verification email"}, status=status.HTTP_400_BAD_REQUEST)
+        return email_confirmation
+
+    def get_queryset(self):
+        qs = EmailConfirmation.objects.all_valid()
+        qs = qs.select_related("email_address__user")
+        return qs
 
 
 ############################# request new confirmation email #############################
-class EmailConfirmation(APIView):
+class NewEmailConfirmation(APIView):
     permission_classes = [AllowAny] 
 
     def post(self, request):

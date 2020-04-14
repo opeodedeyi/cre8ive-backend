@@ -577,5 +577,4 @@ Before each of these routes, add api/
 * For sign in and sign up, the major packages used were [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html#) and [Django rest auth](https://django-rest-auth.readthedocs.io/en/latest/#)
 * Need to fix
     1. Token authentication (JWT)
-    2. Expired email message
-    3. image fields as an object
+    2. image fields as an object

@@ -9,8 +9,8 @@ from . import views as qv
 
 urlpatterns = [
      path('verify-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
-     path('verify-email/again/', qv.EmailConfirmation.as_view(), name='resend-email-confirmation'),
-     path('signup/account-confirm-email/<key>/', ConfirmEmailView.as_view(), name='account_confirm_email'),
+     path('resend-verification-email/', qv.NewEmailConfirmation.as_view(), name='resend-email-confirmation'),
+     path('signup/account-confirm-email/<key>/', qv.ConfirmEmailView.as_view(), name='account_confirm_email'),
      path('', include('rest_auth.urls')),
      path('signup/', include('rest_auth.registration.urls')),
      path('google/', qv.GoogleLogin.as_view(), name='google_login'),
