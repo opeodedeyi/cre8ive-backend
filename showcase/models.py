@@ -10,12 +10,14 @@ class Showcase(models.Model):
     user posting it and content.
 
     people can like this showcases.
+
+    assets is supposed to handle multiple images
     '''
     title = models.CharField(max_length=50)
     description = models.TextField(null=True)
     skill_type = models.ManyToManyField(Skill)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="Showcases")
-    content = models.TextField(null=True)
+    assets = models.TextField(null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     voters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="upvotes")

@@ -7,11 +7,13 @@ class Collaborate(models.Model):
     collaborate mmodel, that allows users to post about 
     projects he wants to undertake, and aks for peole interested
     with relevant skills to show their interest
+
+    assets is supposed to handle multiple images
     '''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="collaborator_user")
     title = models.CharField(max_length=100)
     description = models.TextField(null=True)
-    media = models.TextField(null=True)
+    assets = models.TextField(null=True)
     looking_for = models.ManyToManyField(Skill, related_name="skills_needed")
     location = models.CharField(null=True, max_length=100)
     voters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="likers")
