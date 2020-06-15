@@ -32,7 +32,7 @@ class Showcase(models.Model):
 
 class media(models.Model):
     showcase_id = models.ForeignKey('Showcase', on_delete=models.CASCADE, related_name='medias_showcase')
-    media = models.FileField(blank=True, null=True)
+    media_files = models.FileField(blank=True, null=True)
 
     def __str__(self):
         return self.showcase_id.title
