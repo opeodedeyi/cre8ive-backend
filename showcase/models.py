@@ -17,7 +17,9 @@ class Showcase(models.Model):
     description = models.TextField(null=True)
     skill_type = models.ManyToManyField(Skill)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name="Showcases")
-    assets = models.TextField(null=True)
+    # images
+    thumbnail = models.ImageField(null=True)
+    # timing
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     voters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="upvotes")
@@ -26,6 +28,14 @@ class Showcase(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class media(models.Model):
+    showcase_id = models.ForeignKey('Showcase', on_delete=models.CASCADE, related_name='medias_showcase')
+    media = models.FileField(blank=True, null=True)
+
+    def __str__(self):
+        return self.showcase_id.title
 
 
 class Comment(models.Model):
